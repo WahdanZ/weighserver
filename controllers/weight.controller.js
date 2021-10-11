@@ -59,12 +59,12 @@ exports.findAll = (req, res) => {
 
     Pet.findOne(condition)
         .then(data => {
-            res.send(data.weights);
+            res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Some error occurred while retrieving tutorials."
+                    err.message || "Some error occurred while retrieving Weights."
             });
         });
 };
