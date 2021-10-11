@@ -62,10 +62,11 @@ exports.findAll = (req, res) => {
             res.send(data);
         })
         .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving Weights."
-            });
+            res.send(new Pet({
+                petId:petId,
+               name:`Pet ${petId}`,
+               weights : []
+           }));
         });
 };
 
