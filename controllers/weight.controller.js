@@ -62,11 +62,11 @@ exports.findAll = (req, res) => {
             res.send(data);
         })
         .catch(err => {
-            res.send(new Pet({
+            res.send({
                 petId:petId,
                name:`Pet ${petId}`,
                weights : []
-           }));
+           });
         });
 };
 
