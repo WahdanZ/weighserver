@@ -57,9 +57,9 @@ exports.findAll = (req, res) => {
     let condition = {petId: {$regex: new RegExp(petId), $options: "i"}};
 
 
-    Pet.find(condition)
+    Pet.findOne(condition)
         .then(data => {
-            res.send(data);
+            res.send(data.weights);
         })
         .catch(err => {
             res.status(500).send({
