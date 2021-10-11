@@ -59,7 +59,15 @@ exports.findAll = (req, res) => {
 
     Pet.findOne(condition)
         .then(data => {
+            if(data){
             res.send(data);
+            }else{
+                res.send({
+                    petId:petId,
+                   name:`Pet ${petId}`,
+                   weights : []
+               }); 
+            }
         })
         .catch(err => {
             res.send({
