@@ -16,6 +16,9 @@ jobs:
           heroku_app_name: "petweight" #Must be unique in Heroku
           heroku_email: "midowahdan11@gmail.com"
           usedocker: true
+          docker_build_args: |
+            NODE_ENV
+            DB_URL
         env:
           NODE_ENV: production
           DB_URL: ${{ secrets.DB_URL }}
