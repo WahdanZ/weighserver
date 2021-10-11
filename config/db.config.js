@@ -1,3 +1,3 @@
 module.exports = {
-    url: process.env.PORT ||  "mongodb://localhost:27017/weight_db"
+    url: process.env.DB_URL ||  "mongodb://localhost:27017/weight_db"
 };
