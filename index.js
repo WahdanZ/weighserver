@@ -7,7 +7,7 @@ const db = require("./models");
 
 
 
-// app.use(cors());
+app.use(cors());
 
 app.use(express.json());
 app.use(logger('dev'));
