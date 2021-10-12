@@ -6,7 +6,7 @@ module.exports = app => {
     // Create a new weight
     router.post("/", weights.create);
 
-    // Retrieve all Tutorials
+    // Retrieve all Weights
     router.get("/", weights.findAll);
 
 

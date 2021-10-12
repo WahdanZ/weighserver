@@ -28,11 +28,17 @@ exports.create = (req, res) => {
             })
         }
         else {
-            pet.weights.push(weight);
+            const date = new Date(req.body.date);
+            let oldIndex = pet.weights.findIndex(w => datesAreOnSameDay(date,w.date))
+            if(oldIndex === -1){
+                pet.weights.push(weight);
+            }else {
+                pet.weights[oldIndex] = weight;
+            }
             pet.markModified('weights');
         }
         pet.save().then(pet => res.send(pet)).catch(err =>{
-            console.log('error in function abc: ' + err + ' whilst doing xyz')
+            console.log('error ' + err + ' while  saving  pet')
 
         res
             .status(500)
@@ -70,6 +76,8 @@ exports.findAll = (req, res) => {
             }
         })
         .catch(err => {
+            console.log('error ' + err + ' while  getting weight  ')
+
             res.send({
                 petId:petId,
                name:`Pet ${petId}`,
@@ -78,5 +86,8 @@ exports.findAll = (req, res) => {
         });
 };
 
-
+const datesAreOnSameDay = (first, second) =>
+    first.getFullYear() === second.getFullYear() &&
+    first.getMonth() === second.getMonth() &&
+    first.getDate() === second.getDate();
 
